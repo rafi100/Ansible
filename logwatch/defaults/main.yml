@@ -1,0 +1,12 @@
+---
+
+logwatch_output: "mail"
+logwatch_format: "text"
+logwatch_encode: "none"
+logwatch_admin_email: "root"
+logwatch_sender_email: "Logwatch"
+logwatch_range: "yesterday"
+logwatch_detail: "Med"
+logwatch_mailer: "/usr/sbin/sendmail -t"
+logwatch_log_dir: '/var/log'
+logwatch_tmp_dir: '/var/cache/logwatch'

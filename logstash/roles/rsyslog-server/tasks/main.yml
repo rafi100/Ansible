@@ -1,0 +1,4 @@
+---
+  
+- include: rsyslogserver_centos.yml
+  

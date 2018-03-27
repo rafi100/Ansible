@@ -1,0 +1,8 @@
+#!/bin/bash
+# This script was found and adapted from here : http://www.sebastianomontino.com/blog/2015/05/rkhunter-better-e-mail-integration-alert/
+
+VERSION=`/usr/bin/rkhunter --versioncheck --nocolors`
+
+if [[ $VERSION == *"Update available"* ]]; then
+	echo $VERSION | mail -s "[RKHUNTER] Update available for {{ansible_hostname}}" {{rkhunter_mail_on_warnings}}
+fi

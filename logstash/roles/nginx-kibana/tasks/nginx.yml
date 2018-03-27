@@ -1,0 +1,13 @@
+- name: Install Nginx repo on CentOS
+  yum: name={{ nginx_repo }} state=installed
+  
+- name: Install Nginx on CentOS
+  yum: name={{ item }} state=latest
+  with_items:
+   - nginx
+   - python-passlib
+  
+  notify:
+   - start nginx
+
+

@@ -1,0 +1,14 @@
+---
+- hosts: jenkins
+  roles:
+  - jenkin_war
+
+- hosts: app-server
+  roles:
+  - application_servver
+  
+- hosts: dbserver
+  roles:
+  - databases
+
+

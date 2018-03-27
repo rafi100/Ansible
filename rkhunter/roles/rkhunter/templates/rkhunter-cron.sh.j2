@@ -1,0 +1,11 @@
+#!/bin/bash
+# This script was found and adapted from here : http://www.sebastianomontino.com/blog/2015/05/rkhunter-better-e-mail-integration-alert/
+
+/usr/bin/rkhunter --update --nocolors
+ 
+OUTPUT=`/usr/bin/rkhunter --cronjob --report-warnings-only --nocolors`
+ 
+if [ "$OUTPUT" != "" ]
+then
+echo $OUTPUT | mail -s "[RKHUNTER] Potential threat detected on {{ansible_hostname}}" {{rkhunter_mail_on_warnings}}
+fi

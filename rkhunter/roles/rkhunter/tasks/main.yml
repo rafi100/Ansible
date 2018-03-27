@@ -1,0 +1,21 @@
+---
+
+- include: install.yml
+
+- name: Update rkhunter configuration
+  template: src=etc_rkhunter.conf.j2 dest=/etc/rkhunter.conf owner=root group=root mode=0644
+
+
+# NOTE: This should only be run when config files are known to be good
+- name: Set baseline file properties
+  command: rkhunter --propupd
+  become: yes
+  when: rkhunter_propupd|bool
+
+- name: Run checks
+  command: rkhunter -c --skip-keypress
+  become: yes
+  when: rkhunter_run_checks|bool
+  ignore_errors: yes
+
+- include: cron.yml

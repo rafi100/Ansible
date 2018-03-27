@@ -1,0 +1,6 @@
+---
+
+- include: centos.yml
+  
+
+- include: elasticsearch_config.yml

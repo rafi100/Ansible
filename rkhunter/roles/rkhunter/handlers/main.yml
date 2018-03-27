@@ -1,0 +1,5 @@
+---
+# NOTE: This should only be run when config files are known to be good
+- name: rkhunter_update_base_files
+  command: rkhunter --propupd
+  become: yes

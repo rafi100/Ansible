@@ -1,0 +1,17 @@
+---
+
+- name: Create cron script for rkhunter
+  template: src=rkhunter-cron.sh.j2 dest={{rkhunter_cron_script_path}}/rkhunter-cron.sh owner=root group=root mode=0744
+  become: yes
+
+- name: Add cronjob for rkhunter
+  cron: name="Execute RKHunter" special_time={{rkhunter_cron_frequency}} job="{{rkhunter_cron_script_path}}/rkhunter-cron.sh" user="root"
+  become: yes
+  
+- name: Create cron script for rkhunter update check
+  template: src=rkhunter-update-checker-cron.sh.j2 dest={{rkhunter_cron_script_path}}/rkhunter-update-checker-cron.sh owner=root group=root mode=0744
+  become: yes
+
+- name: Add cronjob for rkhunter update check
+  cron: name="Execute RKHunter update checker" special_time={{rkhunter_cron_frequency}} job="{{rkhunter_cron_script_path}}/rkhunter-update-checker-cron.sh" user="root"
+  become: yes

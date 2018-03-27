@@ -1,0 +1,9 @@
+---
+- hosts: main
+  vars_files:
+    - vars.yml
+  tasks:
+  - name: Taking Database Backup
+    mysql_db: name={{datbase_name}} login_user={{mysql_login_user}} login_password={{mysql_login_password}} state=dump target=/tmp/dump.sql
+
+

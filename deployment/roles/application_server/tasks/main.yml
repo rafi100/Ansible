@@ -1,0 +1,5 @@
+--- 
+- name: fecth file from 
+  fetch: src= /tmp/tmm/*,war
+  
+
